@@ -23,7 +23,7 @@ xhttp.onload = () => {
     elementIMG.id = 'ImgDuck';
 
     btn2.style.position = 'fixed';
-    btn2.textContent ='Hidden';
+    btn2.textContent ='Hide';
     btn2.id = 'imgBtn';
     btn2.addEventListener('click', Button1Handler)
 
@@ -36,8 +36,17 @@ xhttp.onload = () => {
   
 
 function Button1Handler() {
-   document.getElementById('ImgDuck').style.visibility = 'hidden';
-
-
+    
+    var x = document.getElementById('ImgDuck');
+    if (x.style.display == "none")
+    {
+        document.getElementById('imgBtn').textContent = 'Hide';
+        x.style.display = 'block';
+    }
+    else
+    {
+        document.getElementById('imgBtn').textContent = 'Show';
+        x.style.display = 'none'
+    }
 
 }
