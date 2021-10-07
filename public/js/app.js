@@ -1,3 +1,4 @@
+'use strict'
 let xhttp = new XMLHttpRequest;
 xhttp.open('GET', '../data/exercise1.json');
 xhttp.responseType = 'json';
@@ -8,16 +9,35 @@ xhttp.onload = () => {
     console.log(data)
 
     var imgUrl = data.articleImage;
-    
-    let headlineH1 = document.createElement('h1');
-    let introP = document.createElement('p');
-    let articleIMG = document.createElement('img');
 
-    headlineH1.textContent = data.headline;
-    introP.textContent = data.intro;
-    articleIMG.setAttribute('src', imgUrl);
+    let elementH1 = document.createElement('h1');
+    let elementP = document.createElement('p');
+    let elementIMG = document.createElement('img');
+    let btn2 = document.createElement('button');
 
-    document.getElementById('Exercise1').appendChild(headlineH1);
-    document.getElementById('Exercise1').appendChild(introP);
-    document.getElementById('Exercise1').appendChild(articleIMG)
+
+    elementH1.textContent = data.headline;
+    elementP.textContent = data.intro;
+
+    elementIMG.setAttribute('src', imgUrl);
+    elementIMG.id = 'ImgDuck';
+
+    btn2.style.position = 'fixed';
+    btn2.textContent ='Hidden';
+    btn2.id = 'imgBtn';
+    btn2.addEventListener('click', Button1Handler)
+
+    document.getElementById('Exercise1').appendChild(elementH1);
+    document.getElementById('Exercise1').appendChild(elementP);
+    document.getElementById('Exercise1').appendChild(btn2);
+    document.getElementById('Exercise1').appendChild(elementIMG);
+
 };
+  
+
+function Button1Handler() {
+   document.getElementById('ImgDuck').style.visibility = 'hidden';
+
+
+
+}
