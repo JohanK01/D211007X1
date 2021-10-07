@@ -1,10 +1,18 @@
-const element = document.getElementById("Exercise1");
+let xhttp = new XMLHttpRequest;
+xhttp.open('GET', '../data/exercise1.json');
+xhttp.responseType = 'json';
+xhttp.send();
 
-const txt = '{"headline" : "Welcome to Exercise1", "intro" : "This is a short introduction"}'
-const obj = JSON.parse(txt);
-element.innerHTML = obj.headline + " " + obj.intro
+xhttp.onload = () => {
+    const data = xhttp.response;
+    console.log(data)
 
+    let headlineH1 = document.createElement('h1');
+    let introP = document.createElement('p');
 
+    headlineH1.textContent = data.headline;
+    introP.textContent = data.intro;
 
-// let xhttp = XMLHttpRequest();
-// document.getElementById("Exercise1").innerHTML = xhttp.responseText;
+    document.getElementById('Exercise1').appendChild(headlineH1);
+    document.getElementById('Exercise1').appendChild(introP);
+};
