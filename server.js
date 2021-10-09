@@ -7,6 +7,8 @@ const port = 8080;
 
 const appRouter = require('./routes/app');
 
+app.use(express.urlencoded());
+
 app.use(express.static('public'));
 
 app.use('/', appRouter);
